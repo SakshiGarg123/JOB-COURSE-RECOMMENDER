@@ -6,9 +6,7 @@ web_byte = urlopen(req).read()
 
 webpage = web_byte.decode('utf-8')
 from bs4 import BeautifulSoup
-#import BeautifulSoup
 soup = BeautifulSoup(webpage)
-print(soup.find_all("a"))
 list_links=soup.find_all("a")
 for link in list_links:
     if(link.get("count")!=None):
