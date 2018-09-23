@@ -26,5 +26,14 @@ model = gensim.models.Word2Vec(
         min_count=1,
         workers=10)
 model.train(final_document, total_examples=len(final_document), epochs=100)
-w1="Team Leading"
-print(model.wv.most_similar(positive=w1))
+ans=[]
+w1=['Team Leading','Finance']
+i=1
+for document in final_document:
+    if(len(document)!=0):
+        ans.append([model.n_similarity(document, w1),i])
+    i=i+1
+#print(ans)
+ans=sorted(ans)
+print("newline")
+print(ans[::-1])
