@@ -6,7 +6,7 @@ import time
 import csv
 import re
 
-driver = webdriver.Chrome('D:\\chromedriver_win32\\chromedriver.exe')
+driver = webdriver.Chrome('D://chromedriver_win32//chromedriver.exe')
 
 #main edX page of all English courses -- this scraper excludes edX courses in other languages
 driver.get('https://www.edx.org/course?language=English')
@@ -20,3 +20,6 @@ writer = csv.writer(csv_file)
 writer.writerow(['course_link','price', 'title', 
                  'subject', 'level', 'institution', 'length', 
                  'prerequisites', 'short_description', 'effort'])
+
+num_classes_str = driver.find_element_by_xpath('//h2[@class="js-result-msg hide-phone"]').text
+

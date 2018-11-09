@@ -1,4 +1,5 @@
 import gensim
+print "her"
 infile = r"newfile.log"
 
 with open(infile) as f:
@@ -17,23 +18,40 @@ for line in f:
     for i in range(0,len(l)):
         if(i%2==0):
             document.append(line[l[i]+1:l[i+1]])
-    print(document)
+    # print(document)
     final_document.append(document)
 model = gensim.models.Word2Vec(
         final_document,
-        size=150,
+        size=1500,
         window=10,
         min_count=1,
         workers=10)
 model.train(final_document, total_examples=len(final_document), epochs=100)
 ans=[]
-w1=['Team Leading','Finance']
-i=1
+w1=['Bangalore','Finance']
+skills = []
+dictionary = list(model.wv.vocab)
+for item in w1:
+    if item in dictionary:
+        skills.append(item)
+print ""
+print skills
+
+i=0
 for document in final_document:
     if(len(document)!=0):
-        ans.append([model.n_similarity(document, w1),i])
+        ans.append([model.n_similarity(document, skills),i])
+        # print document,final_document[i]
     i=i+1
 #print(ans)
 ans=sorted(ans)
-print("newline")
-print(ans[::-1])
+# print("newline")
+print ""
+print ""
+print ""         
+print "similarity: ", ans[-1:-5:-1]
+
+print ""
+for i in range(-1,-5,-1):
+    print final_document[ans[i][1]]
+    print ""
