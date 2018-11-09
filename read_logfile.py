@@ -1,4 +1,5 @@
 import gensim
+from resumeparser import parse_resume
 print "her"
 infile = r"newfile.log"
 
@@ -28,7 +29,8 @@ model = gensim.models.Word2Vec(
         workers=10)
 model.train(final_document, total_examples=len(final_document), epochs=100)
 ans=[]
-w1=['Bangalore','Finance']
+w1 = parse_resume()
+# w1=['Bangalore','Finance']
 skills = []
 dictionary = list(model.wv.vocab)
 for item in w1:

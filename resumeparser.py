@@ -54,6 +54,7 @@ def init():
     resume_string = resume_string.replace(',',' ')
     #Converting all the charachters in lower case
     resume_string = resume_string.lower()
+    return resume_string
 #Information Extraction Function
 def extract_information(string):
     string.replace (" ", "+")
@@ -65,7 +66,7 @@ def extract_information(string):
         print(item.find('p').get_text())
         print('\n')
 def parse_resume():
-    init()
+    resume_string = init()
     with open('techatt.csv', 'rb') as f:
         reader = csv.reader(f)
         your_listatt = list(reader)
@@ -131,3 +132,4 @@ def parse_resume():
     for i in range(len(list5)):
         print(list5[i])
     print('\n \n')
+    return final_skills
