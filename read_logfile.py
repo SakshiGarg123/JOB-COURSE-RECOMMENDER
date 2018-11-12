@@ -1,6 +1,7 @@
 import gensim
 from resumeparser import parse_resume
-print "her"
+#from past import autotranslate
+print ("her")
 infile = r"newfile.log"
 
 with open(infile) as f:
@@ -26,7 +27,7 @@ model = gensim.models.Word2Vec(
         size=1500,
         window=10,
         min_count=1,
-        workers=10)
+        workers=10,sg=1)
 model.train(final_document, total_examples=len(final_document), epochs=100)
 ans=[]
 w1 = parse_resume()
@@ -36,8 +37,8 @@ dictionary = list(model.wv.vocab)
 for item in w1:
     if item in dictionary:
         skills.append(item)
-print ""
-print skills
+print ("")
+print( skills)
 
 i=0
 for document in final_document:
@@ -48,12 +49,12 @@ for document in final_document:
 #print(ans)
 ans=sorted(ans)
 # print("newline")
-print ""
-print ""
-print ""         
-print "similarity: ", ans[-1:-5:-1]
+print ("")
+print( "")
+print (""  )
+print ("similarity: ", ans[-1:-5:-1])
 
-print ""
+print("")
 for i in range(-1,-5,-1):
-    print final_document[ans[i][1]]
-    print ""
+    print (final_document[ans[i][1]])
+    print( "")
