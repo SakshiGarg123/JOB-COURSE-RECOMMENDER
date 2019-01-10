@@ -1,5 +1,5 @@
 # JOB-COURSE-RECOMMENDER
-The training and placement cell of NSUT allows each student sitting for placements to submit their resume on the portal. We plan to take a pool of resumes as input from the portal and suggest suitable jobs to students in which they would be interested in applying candidature for, based on their skills.
+The training and placement cell of NSUT allows each student sitting for placements to submit their resume on the portal. We take a resume as input and suggest suitable jobs to student in which they would be interested in applying candidature for, based on their skills.
 
 **Input:** Resume as pdf files
 
